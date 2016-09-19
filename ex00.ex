@@ -36,7 +36,11 @@ defmodule Ex00 do
   # Write a function that increments its numeric parameter #
   ##########################################################
 
-  inc = your_anonymous_function(1)
+  #inc = your_anonymous_function(1)
+
+  #inc = fn (num) -> num + 1 end
+
+  inc = &(&1 + 1)
 
   assert inc.(2)  == 3
   assert inc.(-1) == 0

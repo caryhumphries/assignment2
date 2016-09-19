@@ -55,7 +55,16 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  #def odd_even . . . "your code"
+
+  def odd_even([]) do [] end
+  def odd_even([h|t])	do
+     if rem(h,2) != 0 do
+        [:odd | odd_even(t)]
+     else
+        [:even | odd_even(t)]
+     end
+  end
 
 
   ##############################################################################
@@ -77,7 +86,19 @@ defmodule Ex03 do
 
   """
 
-  def list_contains . .. "your code"
+  #def list_contains . .. "your code"
+
+  def list_contains([],_x) do false end
+  def list_contains([h|t],x) do
+     if h == x do
+        true
+     else
+        list_contains(t,x)
+     end
+  end
+
+
+
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,8 +122,18 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
+  #def list_equal . . . "your code"
 
+  def list_equal([],[]) do true end
+  def list_equal([], _) do false end
+  def list_equal(_, []) do false end
+  def list_equal([h1|t1],[h2|t2]) do
+     if h1 != h2 do
+        false
+     else
+        list_equal(t1,t2)
+     end
+  end
 
 
   ##############################################################################
@@ -149,7 +180,43 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
+  #def won . . . "your code"
+
+# Not enough time to implement this, but thoughts on patterns below.
+
+
+#1 2 3
+#4 5 6
+#7 8 9
+
+#Win if any match (1,2,3) (4,5,6) (7,8,9) (1,4,7) (2,5,8) (3,6,9) (1,5,9) (3,5,7)
+
+#conditions where (a == b == c)
+#{ a, b, c, _, _, _, _, _, _ }
+#{ _, _, _, a, b, c, _, _, _ }
+#{ _, _, _, _, _, _, a, b, c }
+#{ a, _, _, b, _, _, c, _, _ }
+#{ _, a, _, _, b, _, _, c, _ }
+#{ _, _, a, _, _, b, _, _, c }
+#{ a, _, _, _, b, _, _, _, c }
+#{ _, _, a, _, b, _, c, _, _ }
+
+
+#winning positions (x,y)
+
+#(1,1)(1,2)(1,3)
+#     (2,1)(3,1)
+#     (2,2)(3,3)
+
+#(1,2)(2,2)(3,2)
+
+#(1,3)(2,3)(3,3)
+#     (2,2)(3,1)
+
+#(2,1)(2,2)(2,3)
+
+#(3,1)(3,2)(3,3)
+
 
 
   ###########################
